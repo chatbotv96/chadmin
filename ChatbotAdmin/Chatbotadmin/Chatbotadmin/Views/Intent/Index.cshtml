@@ -1,0 +1,171 @@
+﻿@model IEnumerable<Chatbotadmin.Models.Intent>
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="panel panel-flat">
+        <div class="panel-body" style="height: 500px;">
+            <div class="row">
+                <div class="col-md-10"> <h2>Intents</h2></div>
+                <div class="col-md-2">  <button type="button" class="btn btn-primary btn-lg"><i class="icon-prev position-left"></i> Back to Dashboard</button></div>
+            </div>
+            <hr />
+            <br />
+            <table class="table table-bordered ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IntentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Event)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Trainingphrase)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Botresponses)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Inputcontext)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Outputcontext)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Actionname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Parameters)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ParamPrompt)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IntentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Event)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Trainingphrase)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Botresponses)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Inputcontext)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Outputcontext)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Actionname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Parameters)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParamPrompt)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Intent", new { id = item.Id }, null)
+                            @*<input type="hidden" value="@ViewBag.hdnFlag" id="hdnFlag" />*@
+                            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                            @Html.ActionLink("Delete", "Delete", "Intent", new { id = item.Id }, null)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            <br />
+            <div class="table-responsive" style="overflow-wrap:unset;">
+                <table class="table table-lg text-nowrap">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="media-left media-middle">
+                                    <a href="#"><img src="/assets/images/brands/facebook.png" class="img-circle img-xs" alt=""></a>
+                                </div>
+                                <div class="media-left">
+                                    <div class=""><a href="#" class="text-default text-semibold">Facebook</a></div>
+                                    <div class="text-muted text-size-small">
+                                        <span class="status-mark border-blue position-left"></span>
+                                        02:00 - 03:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="text-muted">Mintlime</span></td>
+                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 2.43%</span></td>
+                            <td><h6 class="text-semibold">$5,489</h6></td>
+                            <td><span class="label bg-blue">Active</span></td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="#"><i class="icon-file-stats"></i> View statement</a></li>
+                                            <li><a href="#"><i class="icon-file-text2"></i> Edit campaign</a></li>
+                                            <li><a href="#"><i class="icon-file-locked"></i> Disable campaign</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-gear"></i> Settings</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="media-left media-middle">
+                                    <a href="#"><img src="/assets/images/brands/youtube.png" class="img-circle img-xs" alt=""></a>
+                                </div>
+                                <div class="media-left">
+                                    <div class=""><a href="#" class="text-default text-semibold">Youtube videos</a></div>
+                                    <div class="text-muted text-size-small">
+                                        <span class="status-mark border-danger position-left"></span>
+                                        13:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="text-muted">CDsoft</span></td>
+                            <td><span class="text-success-600"><i class="icon-stats-growth2 position-left"></i> 3.12%</span></td>
+                            <td><h6 class="text-semibold">$2,592</h6></td>
+                            <td><span class="label bg-danger">Closed</span></td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="#"><i class="icon-file-stats"></i> View Intent</a></li>
+                                            <li><a href="#"><i class="icon-file-text2"></i> Edit Intent</a></li>
+                                            <li><a href="#"><i class="icon-file-locked"></i> Delete  Intent</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#"><i class="icon-gear"></i> Settings</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+

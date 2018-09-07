@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/icomoon/styles.css" rel="stylesheet" />
+    <link href="~/assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/assets/css/core.css" rel="stylesheet" />
+    <link href="~/assets/css/components.css" rel="stylesheet" />
+    <link href="~/assets/css/colors.css" rel="stylesheet" />
+
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <link href="https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/assets/js/global/jquery.min.js"></script>
+    <script src="~/assets/js/global/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    @*<script src="~/assets/js/global/datatables_responsive.js"></script>*@
+    <script src="~/assets/js/global/select2.min.js"></script>
+    <script src="~/assets/echarts.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.min.js"></script>
+    <script src="~/assets/js/global/app.js"></script>
+    @*<script type="text/javascript" src="~/assets/js/plugins/forms/styling/uniform.min.js"></script>*@
+
+
+    <style>
+        .dropdown:hover {
+            background-color: #26a69a;
+        }
+    </style>
+    <script>
+       
+                        $(document).ready(function () {
+                            $('.navbar1').on('click', 'li', function () {
+                                $(this).addClass('active').siblings().removeClass('active');
+                            });
+                            $('.navbar1').on('click', 'li', function () {
+                                $('.navbar1 li').removeClass('active');
+                                $(this).addClass('active');
+                            });
+                        });
+
+
+    </script>
+    <!-- /theme JS files -->
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+
+    
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Main sidebar -->
+            <div class="sidebar sidebar-main">
+                <div class="sidebar-content">
+                    <!-- User menu -->
+                    <div class="sidebar-user">
+                        <div class="category-content">
+                            <img src="/assets/images/backgrounds/user_bg4.jpg" class=" img-responsive" alt="">
+                            <div class="sidebar-user-material-menu">
+                                <h2> <span>Chatbot Admin</span></h2>
+                            </div>
+                        </div>
+                  
+                    </div>
+                    <!-- /user menu -->
+                    <!-- Main navigation -->
+                    <div class="sidebar-category sidebar-category-visible">
+                        <div class="category-content no-padding">
+                            <ul class="navigation navigation-main navigation-accordion navbar1" id="navigationBAR">
+                                <!-- Main -->
+                                @*<li class="navigation-header"> <i class="icon-menu" title="Main pages"></i></li>*@
+                                <li class="active"><a href="/Home/Index"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                                <li><a href="/Intent/Index"><i class="icon-comment-discussion position-left"></i> <span>Intent</span></a></li>
+                                <li><a href="/Intent/Create"><i class="icon-comment-discussion position-left"></i> <span>Add Intent</span></a></li>
+
+
+                                <li><a href="/Login/Login"><i class="glyphicon-arrow-left"></i> <span>Logout</span></a></li>
+
+                                @*<li data-toggle="collapse" data-target="#service" class="collapsed">
+            <a href="#"><i class="icon-stack"></i> <span class="glyphicons glyphicons-briefcase">MY ACCOUNT</span></a>
+            <ul class="sub-menu collapse navigation navigation-main navigation-accordion" id="service">
+                <li><a href="#"><i class="icon-pen"></i> <span>Change Password</span></a></li>
+                <li><a href="/User/UpdateInfo"><i class="icon-profile"></i> <span>Update Profile</span></a></li>
+                <li><a href="/Account/ViewUsage"><i class="icon-stack"></i> <span>View Usage</span></a></li>
+                <li><a href="/User/ManageSender"><i class="icon-stack"></i> <span>Manage Sender</span></a></li>
+                <li><a href="#"><i class="icon-stack"></i> <span>Manage User</span></a></li>
+                <li><a href="#"><i class="icon-stack"></i> <span>Activity Logs</span></a></li>
+            </ul>
+        </li>*@
+                                </ul>
+</div>
+                    </div>
+                    <!-- /main navigation -->
+                </div>
+            </div>
+            <!-- /main sidebar -->
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <!-- Content area -->
+                <div class="content">
+                    @RenderBody()
+                    <!-- Footer
+                    <div class="footer text-muted">
+                        &copy; 2017. <a href="#">Transcation Mailer</a> by <a href="http://www.netgainstechnologies.com" target="_blank">Netgains Technolgies</a>
+                    </div>  -->
+                    <!-- /footer -->
+                </div>
+                <!-- /content area -->
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+    </div>
+    <!-- /page container -->
+</body>
+</html>

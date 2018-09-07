@@ -1,0 +1,203 @@
+﻿@model Chatbotadmin.Models.Intent
+@{
+    Layout = "";
+}
+<!doctype html>
+<html lang="en">
+<head>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/colors.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script type="text/javascript" src="/assets/js/plugins/loaders/pace.min.js"></script>
+    <script type="text/javascript" src="/assets/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/plugins/loaders/blockui.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    @*<script type="text/javascript" src="assets/js/core/app.js"></script>*@
+
+    <script>
+        $(document).ready(function () {
+            $("#Login").on('click', function () {
+                document.getElementById("Login").disabled = true;
+
+                var username = $("#Email").val();
+                var password = $("#password").val();
+                if (username == "" || username == "") {
+                    alert("Email can not be null");
+                    document.getElementById("Login").disabled = false;
+                }
+                else if (password == "" || password == null) {
+                    alert("password can not be null");
+                    document.getElementById("Login").disabled = false;
+                }
+                else {
+                    $.post("/Login/Logincheck", { "Email": username, "password": password }, function (data) {
+
+                        if (data == 0) {
+                            alert("Email and Password Is not match");
+                            document.getElementById("Login").disabled = false;
+                        }
+                        else if (data == 1) {
+                            swal('Oops...', 'Something went wrong!', 'error')
+                            document.getElementById("Login").disabled = false;
+                        }
+                        else if (data == 2) {
+
+                            swal("", "Login Success!", "success")
+                            window.location.href = "/Home/Index";
+                        }
+
+                        else {
+                            swal("", "Login Success!", "success")
+                            window.location.href = "/Home/Index";
+                        }
+                    });
+                }
+
+            });
+
+        });
+        function ClickEvent() {
+
+        }
+    </script>
+
+    <style>
+
+    .login-container { background-image: url('/assets/images/backgrounds/user_bg4.jpg');}
+    </style>
+</head>
+<body class="login-container">
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <!-- Content area -->
+                <div class="content">
+                        <form action="index.html">
+                            <div class="panel panel-body login-form">
+                                <div class="text-center">
+                                    <div class="icon-object border-slate-300 text-slate-300"><i class="icon-user"></i></div>
+                                    <h5 class="content-group">Login to your account <small class="display-block">Enter your credentials below</small></h5>
+                                </div>
+                                <div class="form-group has-feedback has-feedback-left">
+                                    <input type="text" class="form-control" id="Email" placeholder="Email">
+                                    <div class="form-control-feedback">
+                                        <i class="icon-user text-muted"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group has-feedback has-feedback-left">
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <div class="form-control-feedback">
+                                        <i class="icon-lock2 text-muted"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit"  id="Login"class="btn btn-primary btn-block">Sign in <i class="icon-circle-right2 position-right"></i></button>
+                                </div>
+                                @*<div class="text-center">
+                                    <a href="login_password_recover.html">Forgot password?</a>
+                                </div>*@
+                            </div>
+                        </form>
+                </div>
+                <!-- /content area -->
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+    </div>
+
+    @*<div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <h2>
+                        Welcome to Chatbot Admin
+                    </h2>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+
+                    <form class="form-container">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="Email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+
+
+                        <button type="submit" value="Login" id="Login" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            </div>
+        </div>*@
+
+</body>
+</html>
+
+
+
+
+@*<div class="form-horizontal">
+        <h2 class="center-block">Welcome to Chatbot Admin</h2>
+        <br /> <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>*@
+
+
+@*<div>
+    @Html.ActionLink("New User? Register", "Register", "Login")
+</div>*@
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

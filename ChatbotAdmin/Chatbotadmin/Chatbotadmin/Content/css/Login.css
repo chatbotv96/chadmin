@@ -1,0 +1,12 @@
+﻿.bg {
+    background: url('~/Content/Images/bgimage.jpg')no-repeat;
+    width: 100%;
+    height: vh;
+}
+
+.form-container
+{
+    border:1px solid  #fff;
+    padding:150px
+
+}

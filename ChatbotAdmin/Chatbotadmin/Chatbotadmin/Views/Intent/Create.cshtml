@@ -1,0 +1,219 @@
+﻿@model Chatbotadmin.Models.Intent
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/js/create.js"></script>
+<script src="~/Content/js/main_create.js"></script>
+<link href="https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src=" https://cdn.jsdelivr.net/sweetalert2/6.4.4/sweetalert2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#Create").on('click', function () {
+            document.getElementById("Create").disabled = true;
+
+            var IntentName = $("#IntentName").val();
+            var Event = $("#Event").val();
+            var Trainingphrase = $("#Trainingphrase").val();
+            var Botresponses = $("#Botresponses").val();
+            var Inputcontext = $("#Inputcontext").val();
+            var Outputcontext = $("#Outputcontext").val();
+            var Actionname = $("#Actionname").val();
+            var Parameters = $("#Parameters").val();
+            //var ParamPrompt = $("#ParamPrompt").val();
+            //var Actionname = $("#Actionname").val();
+
+            //var password = $("#password").val();
+            //if (username == "" || username == "") {
+            //    alert("Email can not be null");
+            //    document.getElementById("Login").disabled = false;
+            //}
+            //else if (password == "" || password == null) {
+            //    alert("password can not be null");
+            //    document.getElementById("Login").disabled = false;
+            //}
+            //else {
+            $.post("/Intent/CreateIntent", {
+                "IntentName": IntentName, "Event": Event, "Trainingphrase": Trainingphrase, "Botresponses": Botresponses, "Inputcontext": Inputcontext, "Outputcontext": Outputcontext, "Actionname": Actionname, "Parameters": Parameters
+            }, function (data) {
+
+                if (data == 1) {
+                    swal('Oops...', 'Something went wrong!', 'error')
+                    document.getElementById("Login").disabled = false;
+                }
+                else if (data == 2) {
+
+                    swal("", "Intent added successfully.", "success")
+                    window.location.href = "/Intent/Index";
+                }
+
+                else {
+                    swal("", "Login Success!", "success")
+                    window.location.href = "/Intent/Index";
+                }
+            });
+            //}
+
+        });
+
+    });
+    function ClickEvent() {
+
+    }
+</script>
+
+
+<div class="row">
+    <div class="panel panel-flat">
+        <div class="panel-body">
+
+
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-md-10"> <h2>Customize your chatbot</h2></div>
+                    <div class="col-md-2">  <button type="button" class="btn btn-primary btn-lg"><i class="icon-prev position-left"></i> Back to List</button></div>
+                </div>
+                              <hr />
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label for="intent" class="control-label" style="font-size:larger;">Intent name :</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" style="max-width:600px;" pattern="^[a-zA-Z][\sa-zA-Z]*" title="All characters allowed, but do not begin with a space" name='intent' id="IntentName" placeholder="Enter intent name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label for="intent" style="font-size:larger;">Event :</label>
+                    </div>
+                    <div class="col-md-9">
+                        <a class="add_field_buttonevent text-muted">Add More</a>
+                        @*<button class="btn btn-default add_field_buttonevent">Add More Fields</button>*@
+                        <input class="form-control" style="max-width:600px;" name='et0' id="Event" placeholder="Enter event" pattern="^[a-zA-Z][\sa-zA-Z]*" title="All characters allowed, but do not begin with a space">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label for="tp0" style="font-size:larger;">Training phrase:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <a class="add_field_buttontrain text-muted">Add More</a>
+                        @*<button class="btn btn-default add_field_buttontrain">Add More Fields</button>*@
+                        <input class="form-control" style="max-width:600px;" name='tp0' id="Trainingphrase" placeholder="Enter training phrase" pattern="^[a-zA-Z][\sa-zA-Z]*" title="All characters allowed, but do not begin with a space">
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label for="res" style="font-size:larger;">Bot responses:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <a class="add_field_buttonres text-muted">Add More</a>
+                        @*<button class="btn btn-default add_field_buttonres">Add More Fields</button>*@
+                        <input class="form-control" style="max-width:600px;" name='res0' id="Botresponses" placeholder="Enter bot response" pattern="^[a-zA-Z][\sa-zA-Z]*" title="All characters allowed, but do not begin with a space">
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label for="ctx0" style="font-size:larger;">Input context:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <a class="add_field_buttonctx text-muted">Add More</a>
+                        @*<button class="btn btn-default ">Add More Fields</button>*@
+                        <input class="form-control" name='ctx0' style="max-width:600px;" id="Inputcontext" placeholder="Enter context" pattern="^[a-zA-Z][\sa-zA-Z]*" title="All characters allowed, but do not begin with a space">
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label for="ctx0" style="font-size:larger;">Output context:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <a class="add_field_buttonoctx text-muted">Add More</a>
+                        @*<button class="btn btn-default ">Add More Fields</button><span id="errmsg"></span>*@
+                        <input class="form-control" style="max-width:600px;" name='octx0' id="Outputcontext" placeholder="Enter context" pattern="^[a-zA-Z][\sa-zA-Z]*" title="All characters allowed, but do not begin with a space">
+                        <br />
+                        <input class="form-control octxls" style="max-width:600px;" name='octxls0' type="number" min="0" max="100" id="octxls0" placeholder="Enter lifespan (Default = 5)" title="Only numbers allowed">
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label for="action" style="font-size:larger;">Action name:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" style="max-width:600px;" name='action' id="Actionname" placeholder="Enter action name" pattern="^[a-zA-Z][\sa-zA-Z]*" title="All characters allowed, but do not begin with a space">
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label for="par0" style="font-size:larger;">Parameters:</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" name='parnm0' style="max-width:600px;" id="Parameters" placeholder="Enter parameter name" pattern="^[a-zA-Z][\sa-zA-Z]*" title="All characters allowed, but do not begin with a space">
+                        <br />
+                        <a class="add_field_buttonpar text-muted">Add Prompts</a>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+                @*<div class="form-group">
+                @Html.LabelFor(model => model.IntentName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <span class="fa fa-question-circle title-tooltip"  aria-label="Can be used to “remember” parameter values, so they can be passed between intents." md-labeled-by-tooltip="md-tooltip-32" role="button" tabindex="0">
+
+                </span>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IntentName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IntentName, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="button"  id="Create" class="btn btn-primary pull-right  "><span style="font-size:larger">Add &raquo;</span></button>
+                        @*<input type="submit" value="Create" id="Create" class="btn btn-default" />*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+  
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
